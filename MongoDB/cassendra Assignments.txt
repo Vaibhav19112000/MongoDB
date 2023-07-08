@@ -1,0 +1,38 @@
+1. Create Table institute with following details :
+	institute id, institute name,institute city, institute regno and institute phone.
+	
+2. Insert 2 records in Institute Table and display them.
+
+ 3. Add institute email column in institute Table.
+ 
+ 4. Delete institute email column from institute Table.
+ 
+ 5. Delete institute regno and phone columns from institute Table.
+ 
+ 6. Delete institute table.
+ 
+ CQL Assignments
+1. Create product table with following details (product id, name, desc,price,qty).
+
+2. Insert 3 records in product table.
+
+3. display procuct id and name from product table.
+
+4. Diaplay all details of product having id 2.
+
+5. Delete an entire row of product id 3
+	  
+6. Delete the product_price where product_id is 1.
+	
+7. Modify product id 2 to set  price to 10,000 and product name to washing machine. 
+
+8.Create index on product name column.
+
+9. Drop Index created on product name column.
+
+10. perform the BATCH (Insert, Update and Delete) operations on product table:
+   Insert a new row with the following details (4, 4000, 'CD Player').
+   Update the product_price of product with row id 3 to 8000.
+   Delete product_price of the procuct with row id 2.
+
+   

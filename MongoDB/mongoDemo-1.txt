@@ -1,0 +1,52 @@
+capped collection
+
+db.createCollection("Orders",{max:3,size:1000,capped:true})
+
+db.Orders.insertMany([{oid:1,pname:"Vanilla Icecream",qty:2},{oid:2,pname:"Pista Icecream",qty:12},{oid:3,pname:"Chocolate Icecream",qty:8}])
+
+db.Orders.insert({oid:11,pname:"Mango Icecream",qty:3})
+==============================
+
+regular expression
+
+db.movie.find({actor:/^[Aa]mitabh/})
+
+movies starting with digits
+db.movie.find({name:/^[0-9]/})
+or
+db.movie.find({name:/^\d/})
+
+^ beginning
+\d digit
+$end
+.* set of characters
+
+movies ending with digits
+db.movie.find({name:/[0-9]$/})
+
+name starts with digit and ends with s
+db.movie.find({name:/^[0-9].*s$/})
+
+db.movie.find({name:/^[A-Za-z].*l$/})
+
+=================================
+
+db.movie.updateMany({},{$set:{director:""}})
+
+db.movie.updateMany({name:/Hera P.*/},{$unset:{director:""}})
+ 
+$exist
+db.movie.find({director:{$exists:false}})
+
+============================
+
+multiple entries in array
+
+db.movie.update({name:"3 idiots"},{$push:{actor:{$each:["aaa","bbb","cccc"]}}})
+
+
+
+
+
+
+

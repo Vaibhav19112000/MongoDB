@@ -1,0 +1,68 @@
+window functions in Oracle
+===============================
+create table sales
+(
+  year number,
+  country varchar2(20),
+  profit number
+);
+
+
+
+insert into sales
+values(2020,'India',10000);
+insert into sales
+values(2021,'USA',20000);
+insert into sales
+values(2021,'India',30000);
+insert into sales
+values(2020,'USA',5000);
+insert into sales
+values(2020,'UK',6000);
+insert into sales
+values(2021,'UK',7000);
+insert into sales
+values(2020,'China',8000);
+insert into sales
+values(2021,'China',9000);
+insert into sales
+values(2022,'China',3000);
+insert into sales
+values(2023,'China',3000);
+
+over()
+SELECT YEAR,
+country,
+profit,
+SUM(profit) OVER() AS total_profit
+FROM sales
+ORDER BY country,
+YEAR,
+profit;
+
+partition by
+SELECT year,country,profit,SUM(profit) OVER(PARTITION BY COUNTRY) AS country_profit
+FROM sales
+ORDER BY country,year,profit;
+
+row_number()
+SELECT year,country,profit,ROW_NUMBER() OVER(PARTITION BY country ORDER BY YEAR DESC) AS row_num
+FROM sales;
+
+rank()
+SELECT year,country,profit,RANK() OVER(PARTITION BY country ORDER BY PROFIT DESC ) AS rnk
+FROM sales;
+
+
+SELECT year,country,profit,DENSE_RANK() OVER(PARTITION BY country ORDER BY PROFIT DESC) AS dense_rnk FROM sales;
+
+delete  
+from sales
+where country='China' and year=2023;
+ 
+insert into sales
+values(2023,'China',1500);
+
+db.movie.aggregate([{$group:{_id:null,p:{$sum:'$price'}}}])
+
+db.movie.update({name:"Pushpa"},{$push:{actor:{$each:['aaaaaa','pppp'],$position:1}}})

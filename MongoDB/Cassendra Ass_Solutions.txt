@@ -1,0 +1,98 @@
+1. Create Table institute with following details :
+	institute id, institute name,institute city, institute regno and institute phone.
+	
+CREATE TABLE institute(  
+   institute_id int PRIMARY KEY,  
+   institute_name text,  
+   institute_city text,  
+   institute_regno varint,  
+   institute_phone varint  
+   );   
+   
+   
+ 2. Insert 2 records in Institute Table and display them.
+ 
+    INSERT INTO institute (institute_id, institute_name, institute_city,institute_regno, institute_phone)   
+	VALUES(1,'Naralkar Institute', 'Pune',12345,89979989);  
+	
+	INSERT INTO institute (institute_id, institute_name, institute_city,institute_regno,i nstitute_phone)   
+	VALUES(2,'Object Technology', 'Nashik',90345,987998976); 
+    
+	SELECT * FROM institute; 
+   
+   
+ 3. Add institute email column in institute Table.
+ 
+	ALTER TABLE institute  
+	ADD institute_email text;  
+
+4. Delete institute email column from institute Table.
+	ALTER TABLE institute   
+	DROP institute_email;  
+	
+5. Delete institute regno and phone columns from institute Table.
+	ALTER TABLE institute  
+	DROP (institute_regno, institute_phone);  
+
+6. Delete institute table.
+	DROP TABLE institute; 
+====================================================================
+CQL Assignments
+1. Create product table with following details (product id, name, desc,price,qty).
+
+CREATE TABLE product(  
+   product_id int PRIMARY KEY,  
+   product_name text,  
+   product_desc text,  
+   product_price varint,  
+   product_qty varint  
+   );   
+   
+2. Insert 3 records in product table.
+INSERT INTO product (product_id, product_price, product_name,product_desc,product_qty)   
+VALUES(1,5000, 'TV','Onida',4);  
+INSERT INTO product (product_id, product_price, product_name,product_desc,product_qty)   
+VALUES(2,3000, 'Heater', 'Usha',20);  
+INSERT INTO product (product_id, product_price, product_name,product_desc,product_qty)   
+VALUES(3, 2000, 'Cooler','LG Cooler',10);  
+
+3. display procuct id and name from product table.
+	SELECT product_id, product_name FROM product;   
+	
+4. Diaplay all details of product having id 2.
+	SELECT * FROM product WHERE product_id=2;  
+
+5. Delete an entire row of product id 3
+	DELETE FROM product WHERE product_id=3;     
+
+6. Delete the product_price where product_id is 1.
+	DELETE product_price FROM product WHERE product_id=1;   
+
+7. Modify product id 2 to set  price to 10,000 and product name to washing machine  
+UPDATE product SET product_price=10000,product_name='Washing Machine'  
+WHERE product_id=2;   
+
+8.Create index on product name column.
+CREATE INDEX name ON product (product_name);   
+
+9. Drop Index created on product name column
+   Drop index IF EXISTS Myworkspace.product_name   
+
+10.perform the BATCH (Insert, Update and Delete) operations on product table:
+
+Insert a new row with the following details (4, 4000, 'CD Player').
+Update the product_price of product with row id 3 to 8000.
+Delete product_price of the procuct with row id 2.
+
+
+BEGIN BATCH  
+
+INSERT INTO product (product_id, product_price, product_name)   
+VALUES(4,4000, 'CD player'); 
+
+UPDATE product SET product_price=8000 
+WHERE product_id=3;   
+
+DELETE product_price FROM product WHERE product_id=2;
+
+APPLY BATCH   

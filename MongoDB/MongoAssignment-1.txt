@@ -1,0 +1,58 @@
+1. to find all movies with rating =3
+--> db.movie.find({rating:3},{_id:0}).pretty()
+2. to find all movies  with rating =3 and price=340
+-->db.movie.find({rating:3},{price:340},{_id:0})
+3. to find all movies with rating >3 and sort them ratingwise
+--> db.movie.find({rating:{$gt:3}}).sort({rating:1}).pretty()
+4. to find all movies with rating >3 and rating < 6
+--> db.movie.find({rating:{$gt:3},rating:{$lt:6}},{_id:0}).pretty()
+5. to find all movies with price = either 200 or 340 or 240
+--> db.movie.find({$or:[{price:200},{price:240},{price:340}]}).pretty()
+6. to find all movies with price is not  either 200 or 340 or 240
+--> db.movie.find({price:{$nin:[200,240,340]}}).pretty()
+7. to find all movies with odd rating 
+--> db.movie.find({rating:{$mod:[2,1]}}).pretty()
+8. to find all movies in which there are 3 actors                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       --> db.movie.find({actor:{$size:3}}).pretty()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           9. find all movies in which Amitabh has acted
+
+10. Write a MongoDB query to display all the documents in the collection movie.
+
+11. Write a MongoDB query to display the fields name, actor and rating.
+db.movie.find({},{name:1,actor:1,rating:1}).pretty()
+
+12. find all movies with name ends with t
+db.movie.find({name:/t$/});
+ 
+13. find all movies with name starts with p or a  and ends with t or a
+
+    db.movie.find({name:/^[pa].*[ta]$/})
+    db.movie.find({rating:3}).pretty()
+    db.movie.find({rating:3,price:340}).pretty()
+    db.movie.find({name:/t$/})
+
+14. find all movies with name starts with p or a  and ends with 
+t or a
+
+db.movie.find({name:/^[pa].*[ta]$/})
+db.movie.find({rating:3}).pretty()
+db.movie.find({rating:3,price:340}).pretty()
+
+15.insert 6 documents in emp collection having eno,ename,sal,comm,desg in the column list. desg is designation of employee.
+ 
+16.Update salary of all employees by giving an increment of Rs. 4000.
+ db.emp.updateMnay()
+
+17.Update the remark for transaction id 201.
+ 
+
+19.Update designation of an employee named “Ajit ” from manager to director.
+db.emp.update({ename:"Ajit"},{$set:{desg:"director"}});
+ 
+
+20.Update designation of an employee having Employee Id as “101”
+db.emp.update({eno:101},{$set:{desg:"Boss"}})
+
+ 
+
+ 
+ 
+ 															
